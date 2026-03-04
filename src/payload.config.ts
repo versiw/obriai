@@ -1,15 +1,17 @@
-import fs from 'fs'
-import path from 'path'
+import { CloudflareContext, getCloudflareContext } from '@opennextjs/cloudflare'
 import { sqliteD1Adapter } from '@payloadcms/db-d1-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { r2Storage } from '@payloadcms/storage-r2'
+import fs from 'fs'
+import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
-import { CloudflareContext, getCloudflareContext } from '@opennextjs/cloudflare'
 import { GetPlatformProxyOptions } from 'wrangler'
-import { r2Storage } from '@payloadcms/storage-r2'
 
-import { Users } from './collections/Users'
+import { en } from 'payload/i18n/en'
+import { zh } from 'payload/i18n/zh'
 import { Media } from './collections/Media'
+import { Users } from './collections/Users'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -44,6 +46,10 @@ const cloudflare =
     : await getCloudflareContext({ async: true })
 
 export default buildConfig({
+  i18n: {
+    supportedLanguages: { zh, en },
+  },
+
   admin: {
     user: Users.slug,
     importMap: {

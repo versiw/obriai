@@ -1,0 +1,29 @@
+# 依赖与编译产物
+node_modules
+.next
+.open-next
+.wrangler
+dist
+build
+
+# Payload
+payload-types.ts
+src/app/(payload)/
+
+# Cloudflare
+cloudflare-env.d.ts
+
+# 静态资源与图片
+public/assets
+*.ico
+*.svg
+*.png
+
+# 数据库文件
+*.db
+*.sqlite
+
+# 配置文件
+package-lock.json
+pnpm-lock.yaml
+.env*
