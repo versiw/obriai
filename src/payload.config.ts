@@ -10,6 +10,9 @@ import { GetPlatformProxyOptions } from 'wrangler'
 
 import { en } from 'payload/i18n/en'
 import { zh } from 'payload/i18n/zh'
+
+import { Articles } from '@/collections/Articles'
+import { Sources } from '@/collections/Sources'
 import { Media } from './collections/Media'
 import { Users } from './collections/Users'
 
@@ -56,7 +59,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Sources, Articles],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
